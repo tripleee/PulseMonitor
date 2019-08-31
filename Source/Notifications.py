@@ -77,9 +77,14 @@ class Notifications:
         #except re.error:
         remove = []
         for room, regex, user_id, user_name in self.list():
+            whether = int(user_id) == int(user) ######## DEBUG
+            logging.info('{0} {1} {2}{3}'.format(
+                user_id, "==" if whether else "!=", user,
+                " and r.search({0}) = {1}".format(regex, bool(r.search(regex))) if whether else ""))
             if int(user_id) == int(user) and r.search(regex):
                 remove.append(regex)
         for regex in remove:
+            logging.info('Attempt to remove({0}, {1}, {2})'.format(room, regex, user_id))
             self.remove(room, regex, user_id)
         self.save()
         return remove
