@@ -58,6 +58,7 @@ class Notifications:
     def remove(self, room, regex, user):
         room = str(room)
         user = str(user)
+        logging.info('remove: self.notifications[{0}][{1}] = {2}'.format(room, regex, self.notification[room][regex]))
         self.notifications[room][regex].remove(user)
         #except ValueError:  user not in list for regex
         #except KeyError: regex not in notifications
