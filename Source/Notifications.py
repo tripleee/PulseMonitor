@@ -73,8 +73,10 @@ class Notifications:
                     yield room, regex, user, self.users[str(user)]
 
     def remove_matching(self, room, user, expr):
-        r = re.compile(expr, re.I)
-        #except re.error:
+        try:
+            r = re.compile(expr, re.I)
+        except re.error as e:
+            self.reply('regex error: {0}'.format(e))
         remove = []
         for room, regex, user_id, user_name in self.list():
             whether = int(user_id) == int(user) ######## DEBUG
