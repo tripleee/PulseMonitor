@@ -6,7 +6,9 @@ RUN apk add --no-cache git && \
     adduser -D pulsemonitor && \
     cd /home/pulsemonitor && \
     su pulsemonitor sh -c 'mkdir .pulsemonitor && \
-      git clone https://github.com/Charcoal-SE/PulseMonitor' && \
+      git clone https://github.com/Charcoal-SE/PulseMonitor && \
+      cd PulseMonitor && \
+      git checkout debug-remove' && \
     pip install -r /home/pulsemonitor/PulseMonitor/requirements.txt && \
     rm -rf /var/cache/apk/*
 
