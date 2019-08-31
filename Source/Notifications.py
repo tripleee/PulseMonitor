@@ -60,7 +60,7 @@ class Notifications:
         user = str(user)
         logging.info('remove: self.notifications[{0}][{1}] = {2}'.format(room, regex, self.notifications[room][regex]))
         if user not in self.notifications[room][regex]:
-            logging.info('no {0!r} in self.notifications[{1!r}][{2!r}] = {3!r]'.format(
+            logging.info('no {0!r} in self.notifications[{1!r}][{2!r}] = {3!r}'.format(
                 user, room, regex, self.notifications[room][regex]))
         self.notifications[room][regex].remove(user)
         #except ValueError:  user not in list for regex
